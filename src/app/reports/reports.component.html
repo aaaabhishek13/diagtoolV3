@@ -1,0 +1,80 @@
+<!-- Copyright (c) 2016-2017
+Code written by: Toshiba Software India Pvt. Ltd.
+This file is part of Toshiba test and Diagnostics portal
+Proprietary and confidential
+All rights reserved -->
+
+<!-- This component consists of all the graphs -->
+
+<div class="row">
+  <div class="col-md-4">
+    <div style="display: block">
+      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div style="display: block">
+      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div style="display: block">
+      <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- End of the component -->
+
+<br>
+<hr>
+
+
+<!-- Reports by GUID Number -->
+
+<div class="jumbotron">
+  <form class="form-inline" #reportGuid="ngForm" (ngSubmit)="guidReport(reportGuid)">
+    <div class="row">&nbsp;&nbsp;
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0 col-md-9">
+        <div class="input-group-addon">GUID</div>
+        <input required type="text" class="form-control" placeholder="Enter the GUID Number" id="guid" name="guid" ngModel>
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary" [disabled]="!reportGuid.form.valid">Generate Report</button>
+    </div>
+  </form>
+</div>
+
+<!-- End of Report -->
+
+<br>
+<hr>
+
+
+<!-- Reports by Date Range -->
+
+<div class="jumbotron">
+  <form class="form-inline" #reportDate="ngForm" (ngSubmit)="dateRangeReport(reportDate)">
+    <div class="row">&nbsp;&nbsp;
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0 col-md-3">
+        <div class="input-group-addon">Type</div>
+        <select class="form-control" (change)="onChange($event)">
+          <option value="0">Select</option>
+          <option value="1">Fault Analysis</option>
+          <option value="2">Trend Analysis</option>
+        </select>
+      </div>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0 col-md-3">
+        <div class="input-group-addon">From</div>
+        <input required type="date" class="form-control" id="dateFrom" name="dateFrom" ngModel>
+      </div>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0 col-md-3">
+        <div class="input-group-addon">To</div>
+        <input required type="date" class="form-control" id="dateTo" name="dateTo" ngModel>
+      </div>&nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary" [disabled]="!reportDate.form.valid">Generate Report</button>
+    </div>
+  </form>
+</div>

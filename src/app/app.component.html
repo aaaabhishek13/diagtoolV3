@@ -1,20 +1,89 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- Copyright (c) 2016-2017
+Code written by: Toshiba Software India Pvt. Ltd.
+This file is part of Toshiba test and Diagnostics portal
+Proprietary and confidential
+All rights reserved -->
 
+<!-- This is the login component shown on startup. -->
+
+<div *ngIf="!loginStatus">
+  <div class="wrapper">
+    <form class="form-signin">
+      <div style="margin:0 auto;padding-bottom:10px" class="text-center">
+        <img src="assets/logo.jpg" width="150" height="50" class="d-inline-block align-top" alt="">
+      </div>
+      <!-- <h2 class="form-signin-heading">Please login</h2> -->
+      <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
+      <br/>
+      <input type="password" class="form-control" name="password" placeholder="Password" required="" />
+      <br/>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="validate()">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- End of Login Component -->
+
+<!-- Header and navigation bar, part of the main component fixed for all pages -->
+
+<div *ngIf="loginStatus">
+  <nav class="navbar navbar-expand-lg navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarSupportedContent">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <img src="assets/logo.jpg" width="150" height="52" class="d-inline-block align-top" alt="">
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav navbar-right">
+          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+            <a routerLink="">
+              <span class="glyphicon glyphicon-th"> </span>
+              <strong>Jobs Dashboard</strong>
+            </a>
+          </li>
+          <li routerLinkActive="active" class="nav-item">
+            <a routerLink="reports">
+              <span class="glyphicon glyphicon-folder-open"></span>
+              <strong>Reports</strong>
+            </a>
+          </li>
+          <li routerLinkActive="active" class="nav-item">
+            <a routerLink="contact">
+              <span class="glyphicon glyphicon-envelope"></span>
+              <strong>Contact Us</strong>
+            </a>
+          </li>
+          <li routerLinkActive="active" class="nav-item">
+            <a routerLink="logout">
+              <span class="glyphicon glyphicon-log-out"></span>
+              <strong>Logout</strong>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="jumbotron ">
+    <h1 class="text-center" style="font-family:Georgia, 'Times New Roman', Times, serif">Test And Diagnostics Portal</h1>
+  </div>
+  <!-- <mat-progress-bar mode="indeterminate" *ngIf="objLoaderStatus"></mat-progress-bar> -->
+  <br/>
+  <br/>
+
+  <!-- End of Header and navigation bar -->
+
+  <!-- The main container where all other components are shown -->
+
+  <div class="container">
+    <router-outlet></router-outlet>
+    <br>
+  </div>
+
+</div>
