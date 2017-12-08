@@ -63,6 +63,7 @@ export class GuidsComponent implements OnInit {
 
   public routeCh() {
     this.isSelected = false;
+    this.testPage = false;
   }
 
   public getTestName(id: number) {
@@ -169,6 +170,9 @@ export class GuidsComponent implements OnInit {
   }
 
 
+  public saveDetails(form){
+
+  }
 
   public fileChange(event) {
     var fileList: FileList = event.target.files;

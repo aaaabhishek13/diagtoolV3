@@ -19,4 +19,24 @@ export class ReportsComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+
+  public guidReport(reportGuid){
+
+  }
+
+  public dateRangeReport(reportDate){
+
+  }
+
+  public onChange(event){
+    
+  }
 }
